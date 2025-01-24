@@ -1,9 +1,6 @@
-import time
 from datetime import datetime
-
 from plugins.plugin import Plugin
 from openai import OpenAI
-
 
 
 class Demo_chat_with_chatgpt(Plugin):
@@ -12,6 +9,7 @@ class Demo_chat_with_chatgpt(Plugin):
     类的名称需要与包名一致，否则无法正常加载。
     """
     name = 'Demo_chat_with_chatgpt'
+
     def deal_msg(self):
         """
         这里写你的业务处理逻辑，
@@ -20,21 +18,21 @@ class Demo_chat_with_chatgpt(Plugin):
         :return:
         """
         # 将收到的消息调用AI的接口进行问答。
-        client = OpenAI(api_key=self.config.get("api_key"),base_url=self.config.get("base_url"))
+        client = OpenAI(api_key=self.config.get("api_key"), base_url=self.config.get("base_url"))
         current_time_local = datetime.now().astimezone()
-        response  = client.chat.completions.create(model=self.config.get("model_name"),messages=[{
-                "role":"system",
-                "content":f"{self.config.get('system_prompt')} 当前时间（本地时区）: {current_time_local}"
-            },
+        response = client.chat.completions.create(model=self.config.get("model_name"), messages=[{
+            "role": "system",
+            "content": f"{self.config.get('system_prompt')} 当前时间（本地时区）: {current_time_local}"
+        },
             {
-                "role":"user",
-                "content":self.msg.content
+                "role": "user",
+                "content": self.msg.content
             }
         ])
-        text=response.choices[0].message.content
-        self.wcf.send_text(text,self.msg.roomid if self.msg.from_group() else self.msg.sender,None)
+        text = response.choices[0].message.content
+        self.wcf.send_text(text, self.msg.roomid if self.msg.from_group() else self.msg.sender, None)
 
-    def filter_msg(self)->bool:
+    def filter_msg(self) -> bool:
         """
         黑名单过滤机制，默认通过原则。
         :return:
@@ -45,9 +43,9 @@ class Demo_chat_with_chatgpt(Plugin):
             return False
 
         # 群消息不处理
-        if self.msg.from_group() and self.msg.roomid not in self.config.get("chat_room_id",[]):
+        if self.msg.from_group() and self.msg.roomid not in self.config.get("chat_room_id", []):
             return False
-        if not self.msg.from_group() and self.msg.sender not in self.config.get("chat_wxid",[]):
+        if not self.msg.from_group() and self.msg.sender not in self.config.get("chat_wxid", []):
             return False
 
         return True

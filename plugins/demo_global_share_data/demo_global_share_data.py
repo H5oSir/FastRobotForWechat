@@ -1,5 +1,3 @@
-import time
-
 from plugins.plugin import Plugin
 
 

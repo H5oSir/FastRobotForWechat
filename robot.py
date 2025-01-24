@@ -11,6 +11,7 @@ wcf.debug = debug
 
 if wcf.is_login():
     print("微信机器人登录状态：True")
+    print(f"机器人信息：{wcf.get_user_info()}")
 else:
     print("微信机器人登录状态：False")
 

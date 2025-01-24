@@ -1,8 +1,4 @@
 from pprint import pprint as print
-from turtledemo.penrose import start
-
-from setuptools.command.alias import alias
-
 from plugins.plugin import Plugin
 
 
@@ -38,25 +34,25 @@ class Command_run(Plugin):
                 print(f"{function_name} 结果如下:")
                 print(response)
                 text = f"self.wcf.{function_name}执行结果:\n{response}"
-                start=0
-                step_len=4096
-                end=step_len
+                start = 0
+                step_len = 4096
+                end = step_len
                 while end < len(text):
-                    self.wcf.send_text(text[start:end-1], self.msg.sender, None)
-                    start=end
-                    end=end+step_len
+                    self.wcf.send_text(text[start:end - 1], self.msg.sender, None)
+                    start = end
+                    end = end + step_len
                 self.wcf.send_text(text[start:len(text)], self.msg.sender, None)
             except Exception as e:
-                text =f"{function_name} 执行错误！错误信息：{e}"
+                text = f"{function_name} 执行错误！错误信息：{e}"
                 print(text)
                 self.wcf.send_text(text, self.msg.sender, None)
         if self.msg.content == "show groupid" and self.msg.from_group():
-            sender_alias_name=self.wcf.get_alias_in_chatroom(self.msg.sender,self.msg.roomid)
-            contacts=self.wcf.get_contacts()
-            RoomName=""
+            sender_alias_name = self.wcf.get_alias_in_chatroom(self.msg.sender, self.msg.roomid)
+            contacts = self.wcf.get_contacts()
+            RoomName = ""
             for contact in contacts:
-                if contact.get("wxid")==self.msg.roomid:
-                    RoomName=contact.get("name")
+                if contact.get("wxid") == self.msg.roomid:
+                    RoomName = contact.get("name")
 
             text = f"RoomID:{self.msg.roomid} \nRoomName：{RoomName} \nSenderName: {sender_alias_name}\n"
             self.wcf.send_text(text, self.msg.sender, None)
@@ -64,10 +60,10 @@ class Command_run(Plugin):
 
             if "msg" in self.msg.content:
                 class_name = "msg"
-                response=dir(self.msg)
+                response = dir(self.msg)
             else:
                 class_name = "wcf"
-                response=dir(self.wcf)
+                response = dir(self.wcf)
 
             text = f"dir({class_name})执行结果:\n{response}"
             start = 0
