@@ -1,0 +1,14 @@
+name: Demo_chat_with_chatgpt
+description: 这是一个接入AI对话的插件，用来给开发者做演示的。
+wx: h5osir
+mail: 2838215550@qq.com
+status: true
+version: 1
+chat_room_id:
+- 4355533xxxx@chatroom
+chat_wxid:
+- wxid_ngacb0c6zlxxxx
+base_url: https://api.20a.top/v1/
+api_key: sk-OzgNVaxGhHt1DhFvC2Fe2f1a838e4f858882Cf5c9aBf7445
+model_name: gpt-4o-mini
+system_prompt: 你是一个遵守中国法律和道德约束的AI，名字叫做GPT-99O-TO-AGI，请不要乱讲话，爱中国，爱党，爱人民。

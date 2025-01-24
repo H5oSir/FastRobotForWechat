@@ -1,0 +1,27 @@
+# Log files
+logs/*
+
+# .idea
+.idea
+
+# .venv
+.venv
+
+# test
+test
+
+*pyc
+__pycache__
+
+# pro plugins
+*_pro
+
+plugins/forward/img
+plugins/forward/config.json
+
+plugins/*/config.json
+plugins/*/config.json.simple
+
+convert_configs.py
+
+wechat_install_packages

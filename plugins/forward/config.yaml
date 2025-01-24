@@ -1,0 +1,13 @@
+name: Forward
+description: 这是一个消息转发插件，将主群的消息转发给从群。
+wx: h5osir
+mail: 2838215550@qq.com
+version: 1
+master_room_id:
+- 4355533xxxx@chatroom
+slave_room_id:
+- 4355533xxxx@chatroom
+- 4355533xxxx@chatroom
+- wxid_ngacb0c6zxxxx
+manager_wxid:
+- wxid_ngacb0c6zlxxxx

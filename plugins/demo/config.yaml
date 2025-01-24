@@ -1,0 +1,13 @@
+name: Demo
+description: 这是一个Demo插件，用来给开发者做演示的。
+wx: h5osir
+mail: 2838215550@qq.com
+status: true
+version: 1
+master_room_id:
+- xxxxx@chatroom
+slave_room_id:
+- xxxxx@chatroom
+- xxxxx@chatroom
+manager_wxid:
+- wxid_++++++

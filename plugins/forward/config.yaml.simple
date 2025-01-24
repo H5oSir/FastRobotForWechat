@@ -1,0 +1,11 @@
+name: Forward
+wx: h5osir
+mail: 2838215550@qq.com
+version: 1
+master_room_id:
+- xxxxx@chatroom
+slave_room_id:
+- xxxxx@chatroom
+- xxxxx@chatroom
+manager_wxid:
+- wxid_++++++

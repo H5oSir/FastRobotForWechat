@@ -1,0 +1,8 @@
+name: Command_run
+description: 这是一个执行wcf实例函数的插件，用来给开发者通过私信的方式执行wcf函数获取需要的信息。
+wx: h5osir
+status: true
+mail: 2838215550@qq.com
+version: 1
+manager_wxid:
+- wxid_ngacb0c6zxxxx
