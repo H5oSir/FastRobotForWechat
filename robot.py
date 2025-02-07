@@ -1,13 +1,26 @@
 import signal
+from pathlib import Path
+
 from wcferry import Wcf, WxMsg
 from queue import Empty
 from threading import Thread
 from plugins.plugin import deal_msg_with_plugins
+from common.file import File
 
-debug = True
+
+file=File()
+
+# __file__ 是当前文件的路径，parent 指向文件所在目录
+config_dir = Path(__file__).resolve().parent
+print(f"配置文件目录: {config_dir}")
+
+config=file.load_config_from_yaml_file(config_dir)
+debug = config.get("debug",False)
 
 wcf = Wcf(debug=debug)
 wcf.debug = debug
+# 开启插件多线程运行，每个插件一个线程
+wcf.multi_threading_run_plugin=config.get("multi_threading_run_plugin",False)
 
 if wcf.is_login():
     print("微信机器人登录状态：True")

@@ -1,5 +1,5 @@
 import json
-from itertools import count
+import threading
 
 import yaml
 from wcferry import Wcf, WxMsg
@@ -227,6 +227,7 @@ def deal_msg_with_plugins(wcf, msg):
     # 检查重新加载
     # check_and_reload_plugins(plugins_cls)
     count=1
+    thread_list=[]
     for plugin_name, plugin_class in plugins_cls.items():
         try:
             print(f"第{count}个插件 {plugin_name} 执行开始")
@@ -234,10 +235,17 @@ def deal_msg_with_plugins(wcf, msg):
             plugin_instance = plugin_class(wcf, msg)
             # 调用 run 方法
             if plugin_instance.get_status():
-                plugin_instance.run()
+                if wcf.multi_threading_run_plugin:
+                    thread = threading.Thread(target=plugin_instance.run,name=plugin_name, daemon=True)
+                    thread.start()
+                    thread_list.append(thread)
+                    print(f"{plugin_name} 开启线程成功")
+                else:
+                    plugin_instance.run()
+                    print(f"{plugin_name} 执行成功")
             else:
                 print(f"{plugin_name} 插件未开启")
-            print(f"{plugin_name} 执行成功")
+
             count+=1
         except Exception as e:
             print(e)

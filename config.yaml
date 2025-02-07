@@ -1,0 +1,6 @@
+name: Robot_config
+description: 这是机器人的配置文件。
+status: true
+version: 1
+debug: true
+multi_threading_run_plugin: false
