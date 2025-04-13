@@ -59,10 +59,11 @@
 
 2.下载项目到本地,安装项目的依赖。
 ```sh
-pip install -r requirements.txt
+pip install -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com -r requirements.txt 
 ```
-
-3.检查plugins目录下的插件配置是否要开启，然后启动项目。
+3.点击 [DLL下载](https://github.com/lich0821/WeChatFerry/releases/download/v39.3.5/v39.3.5.zip) 下载3.9.11.25版本对应的DLL，打开 外部库\site-packages\wcferry 进行DLL的替换。
+![img.png](images/img.png)
+4.检查plugins目录下的插件配置是否要开启，然后启动项目。
 ```sh
 python3 robot.py
 ```
@@ -154,3 +155,5 @@ WeChatFerry
 
 ## 致谢
 1. 本项目基于<strong>[WeChatFerry🤖](https://github.com/lich0821/WeChatFerry)</strong>进行封装，在此对<strong>WeChatFerry</strong>所有贡献人员由衷的表示感谢！
+2. 人员：
+   1. [yigehaozi](https://github.com/yigehaozi)：插件管理器作者，项目积极贡献者。
